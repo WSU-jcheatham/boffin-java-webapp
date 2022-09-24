@@ -22,11 +22,13 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'com.sparkjava:spark-core:2.9.4'
+    implementation 'org.slf4j:slf4j-simple:2.0.0'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'boffin.App'
+    mainClass = 'boffin.Server'
 }
 
 tasks.named('test') {
