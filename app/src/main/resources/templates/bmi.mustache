@@ -1,0 +1,14 @@
+<html>
+    <body>
+        {{^bmi}}
+        <form method="get">
+            <label>Height: <input name="height"></label>
+            <label>Weight: <input name="weight"></label>
+            <button>Submit</button>
+        </form>
+        {{/bmi}}
+        {{#bmi}}
+        <h1>Your BMI is: {{bmi}}</h1>
+        {{/bmi}}
+    </body>
+</html>

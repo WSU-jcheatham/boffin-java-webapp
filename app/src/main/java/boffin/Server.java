@@ -26,5 +26,21 @@ public class Server {
             return new MustacheTemplateEngine().render(
                     new ModelAndView(model, "hello.mustache"));
         });
+
+        get("/bmi", (req, res) -> {
+            String heightStr = req.queryParams("height");
+            String weightStr = req.queryParams("weight");
+            HashMap<String, Object> model = new HashMap<>();
+
+            if (heightStr != null && weightStr != null) {
+                int height = Integer.parseInt(heightStr);
+                int weight = Integer.parseInt(weightStr);
+                double bmi = App.calculateBmi(height, weight);
+                model.put("bmi", bmi);
+            }
+
+            return new MustacheTemplateEngine().render(
+                    new ModelAndView(model, "bmi.mustache"));
+        });
     }
 }

@@ -3,12 +3,25 @@
  */
 package boffin;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
+import java.util.Scanner;
+
+class App {
+    public static double calculateBmi(int height, int weight) {
+        final double IMPERIAL_CONV = 703.0;
+        double bmi = (weight * IMPERIAL_CONV) / Math.pow(height, 2);
+        return bmi;
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Scanner bob = new Scanner(System.in);
+
+        System.out.print("Enter your height in inches: ");
+        int height = bob.nextInt();
+
+        System.out.print("Enter your weight to the nearest pound: ");
+        int weight = bob.nextInt();
+
+        double bmi = calculateBmi(height, weight);
+        System.out.printf("Your BMI is %.1f\n", bmi);
     }
 }
