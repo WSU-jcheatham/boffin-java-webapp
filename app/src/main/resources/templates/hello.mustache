@@ -1,5 +1,13 @@
 <html>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+    <body>
+        {{^name}}
+        <form method="get">
+            <label>Name: <input name="name"></label>
+            <button>Submit</button>
+        </form>
+        {{/name}}
+        {{#name}}
+        <h1>Hello {{name}}!</h1>
+        {{/name}}
+    </body>
 </html>

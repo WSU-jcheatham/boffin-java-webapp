@@ -15,13 +15,14 @@ public class Server {
         get("/", (req, res) -> "<html><body><h1>Hello World!</h1></body></html>");
 
         get("/hello", (req, res) -> {
-            // String name = req.queryParams("name");
             // if (name == null) {
             // return "<html><body><form method='get'><label>Name: <input
             // name='name'></label><button>Submit</button><body></html>";
             // }
             // return "<html><body><h1>Hello " + name + "!</h1></body></html>";
+            String name = req.queryParams("name");
             HashMap<String, Object> model = new HashMap<>();
+            model.put("name", name);
             return new MustacheTemplateEngine().render(
                     new ModelAndView(model, "hello.mustache"));
         });
