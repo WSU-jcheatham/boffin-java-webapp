@@ -5,16 +5,25 @@ package boffin;
 
 import static spark.Spark.get;
 
+import java.util.HashMap;
+
+import spark.ModelAndView;
+import spark.template.mustache.MustacheTemplateEngine;
+
 public class Server {
     public static void main(String[] args) {
         get("/", (req, res) -> "<html><body><h1>Hello World!</h1></body></html>");
 
         get("/hello", (req, res) -> {
-            String name = req.queryParams("name");
-            if (name == null) {
-                return "<html><body><form method='get'><label>Name: <input name='name'></label><button>Submit</button><body></html>";
-            }
-            return "<html><body><h1>Hello " + name + "!</h1></body></html>";
+            // String name = req.queryParams("name");
+            // if (name == null) {
+            // return "<html><body><form method='get'><label>Name: <input
+            // name='name'></label><button>Submit</button><body></html>";
+            // }
+            // return "<html><body><h1>Hello " + name + "!</h1></body></html>";
+            HashMap<String, Object> model = new HashMap<>();
+            return new MustacheTemplateEngine().render(
+                    new ModelAndView(model, "hello.mustache"));
         });
     }
 }
